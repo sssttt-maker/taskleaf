@@ -10,15 +10,13 @@
   </head>
 
   <body>
-    <nav class="app-title navbar navbar-expand-md navbar-light bg-light navbar-brand">
-      Taskleaf
-    </nav>
+    <%= render 'layouts/navbar' %>
     <div class="container">
       <% if flash.notice.present? %>
         <div class="alert alert-success">
           <%= flash.notice %>
         </div>
-      <% end %>  
+      <% end %>
       <%= yield %>
     </div>
   </body>
