@@ -18,7 +18,12 @@
   </div>
 <% end %>
 
-<%= link_to '新規登録', new_task_path, class: 'btn btn-primary' %>
+<%= link_to '新規登録', new_task_path, class: 'btn btn-primary mb-3' %>
+
+<div class~"mb-3">
+  <%= paginate @tasks %>
+  <%= page_entries_info @tasks %>
+</div>
 
 <div class="mb-3">
   <table class="table table-hover">
@@ -43,3 +48,10 @@
     </tbody>
   </table>
 </div>
+
+<%= link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-primary mb-3' %>
+
+<%= form_tag import_tasks_path, multipart: true, class: 'mb-3' do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート", class: 'btn btn-primary' %>
+<% end %>

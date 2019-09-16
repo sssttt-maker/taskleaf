@@ -4,22 +4,4 @@
   <%= link_to '一覧', tasks_path, class: 'nav-link' %>
 </div>
 
-<% if @task.errors.present? %>
-  <ul id="error_explanation">
-    <% @task.errors.full_message.each do |message|  %>
-      <li><%= message %><li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @task, local: true, url: confirm_new_task_path do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', id: 'task_name' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, row: 5, class: 'form-control', id: 'task_description' %>
-  </div>
-  <%= f.submit '確認', class: 'btn btn-primary' %>
-<% end %>
+<%= render partial: 'layouts/form', locals: { task: @task } %>
